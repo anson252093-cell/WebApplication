@@ -1,13 +1,17 @@
 <?php
 $servername = "localhost";
-$username = "anson";
-$password = "ALZK0705";
+$username = "root";
+$password = "";
 $dbname = "anson";
+
+
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
+//if(isset($_POST['email']) && isset($_POST['password'])) {
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $email = $_POST['email'];
@@ -16,9 +20,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "SELECT * FROM student WHERE email='$email' AND password='$password'";
 
     $result = $conn->query($sql);
-
+//echo mean print out
+//echo $_GET['password']; need to put ? in link behind
+//echo $_POST['password'];
     if ($result->num_rows > 0) {
-        echo "Login Successful!";
+       header("Location:booklist.php"); 
+       echo "Login Successful!";
     } else {
         echo "Invalid Email or Password!";
     }
