@@ -43,10 +43,11 @@ $conn = new mysqli($servername, $username, $password, $dbname);
         while($row = mysqli_fetch_assoc($result)) {
         ?>
         <tr>
+            <form action="insertBook.php" method="POST">
             <td><?php echo $row['name']?></td>
             <td><?php echo $row['email'] ?></td>
             <td><?php echo $row['yearjoin'] ?></td>
-            <td><input type ="button" value="Edit"></td>
+            <td><a href="editProfile.php"><input type ="button" value="Edit"></a></td>
         </tr>
         <?php
         }

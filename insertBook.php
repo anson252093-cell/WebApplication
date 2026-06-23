@@ -11,12 +11,12 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-/*$ISBN = $_POST["ISBN"];
+$ISBN = $_POST["ISBN"];
 $title = $_POST["title"];
 $author = $_POST["author"];
 $description = $_POST["description"];
 $price = $_POST["price"];
-*/
+
 $sql = "INSERT INTO booklist (ISBN, title, author, description, price) 
 VALUES ('".$_POST["ISBN"]."', '".$_POST["title"]."', '".$_POST["author"]."', '".$_POST["description"]."', '".$_POST["price"]."')";
 
