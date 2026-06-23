@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "anson";
-$password = "ALZK0705";
+$username = "root";
+$password = "";
 $dbname = "anson";
 
 
@@ -61,7 +61,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
         ?>
         <a href="profile.php"><input type="submit" value="Profile"></a>
-        <a href=""><input type="submit" value="AddBook"></a>
+        <a href="addBook.php"><input type="submit" value="AddBook"></a>
         <a href=""><input type="submit" value="Logout"></a>             
 </body>
 </html>

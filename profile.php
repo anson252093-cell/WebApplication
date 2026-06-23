@@ -1,9 +1,9 @@
 <?php
 $servername = "localhost";
-$username = "anson";
-$password = "ALZK0705";
+$username = "root";
+$password = "";
 $dbname = "anson";
-
+session_start();
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 ?>
@@ -36,7 +36,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
         </tr>
         <?php
 
-        $query= "SELECT * FROM student";
+        $query= "SELECT * FROM student WHERE email='".$_SESSION["email"]."'";
 
         $result = mysqli_query($conn, $query);
 

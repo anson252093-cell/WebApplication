@@ -11,7 +11,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
 //if(isset($_POST['email']) && isset($_POST['password'])) {
-
+session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $email = $_POST['email'];
@@ -24,6 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //echo $_GET['password']; need to put ? in link behind
 //echo $_POST['password'];
     if ($result->num_rows > 0) {
+      $_SESSION["email"] = $_POST["email"];
        header("Location:booklist.php"); 
        echo "Login Successful!";
     } else {
