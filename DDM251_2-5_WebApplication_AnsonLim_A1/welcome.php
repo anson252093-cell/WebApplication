@@ -35,7 +35,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
     <a href="customer.php">Customer</a>
     <a href="#">Create Customer</a>
     <a href="#">Customer List</a>
-    <a href="#">Product</a>
+    <a href="product.php">Product</a>
     <a href="#">Order</a>
     <a href="#">Logout</a>
 </div>

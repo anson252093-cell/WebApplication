@@ -52,7 +52,10 @@ $conn = new mysqli($servername, $username, $password, $dbname);
             <td><?php echo $row['author'] ?></td>
             <td><?php echo $row['description'] ?></td>
             <td><?php echo $row['price'] ?></td>
-            <td><input type ="button" value="Edit"></td>
+            <td><form action="editBooklist.php" method="post">
+                        <input type="hidden" name="ISBN" value="<?php echo $row['ISBN']; ?>">
+                        <input type="submit" value="Edit">
+                    </form></td>
             <td><button>Delete</button></td>
         </tr>
         <?php

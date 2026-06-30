@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,12 +27,12 @@
             <th>YearJoin</th>
         </tr>
   <tr>
-            <form action="" method="POST">
-                <td><input type="text" name="password"></td>
-                <td><input type="text" name="confrimPassword"></td>
+            <form action="updateProfile.php" method="POST">
+                <td><input type="password" name="password"></td>
+                <td><input type="password" name="confrimPassword"></td>
                 <td><input type="text" name="name"></td>
                 <td><input type="text" name="yearjoin"></td>
-                <td><input type="submit" value="add"></td>
+                <td><input type="submit" value="submit"></td>
                 </form>
         </tr>
 
