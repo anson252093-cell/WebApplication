@@ -11,11 +11,31 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 session_start();
 
 $password = $_POST["password"];
-$confrimPassword = $_POST["confrimPassword"];
+$confirmPassword = $_POST["confirmPassword"];
 
 $name = $_POST["name"];
 $yearjoin = $_POST["yearjoin"];
 $email = $_SESSION["email"];
+
+/* if (empty($_POST["password"]) || empty($_POST["confirmPassword"]) || empty($_POST["name"]) || empty($_POST["yearjoin"])) {
+    
+  $empty = "No empty field allowed";
+  header("Location: editProfile.php?empty=$empty");
+} else if ($_POST["yearjoin"] > date("Y")) {
+
+
+$yeae */
+    
+
+if($password !== $confirmPassword){
+   die(header("Location: editProfile.php?error=Password does not match"));
+   exit();
+}
+
+/* if ($_POST["yearjoin"] > date("Y")) {
+    exit("Year joined cannot be greater than the current year.");
+} */
+
 
 $sql = "UPDATE student
 SET

@@ -22,16 +22,16 @@
     <table width="500">
         <tr>
             <th>Password</th>
-            <th>Confrim Password</th>
+            <th>Confirm Password</th>
             <th>Name</th>
             <th>YearJoin</th>
         </tr>
   <tr>
             <form action="updateProfile.php" method="POST">
-                <td><input type="password" name="password"></td>
-                <td><input type="password" name="confrimPassword"></td>
-                <td><input type="text" name="name"></td>
-                <td><input type="text" name="yearjoin"></td>
+                <td><input type="password" name="password" required minlength="6"></td>
+                <td><input type="password" name="confirmPassword" required minlength="6"></td>
+                <td><input type="text" name="name" required></td>
+                <td><input type="number"  name="yearjoin" required></td>
                 <td><input type="submit" value="submit"></td>
                 </form>
         </tr>
@@ -43,5 +43,12 @@
         <a href="profile.php"><input type="submit" value="Back"></a>
         <a href=""><input type="submit" value="Logout"></a>
         
+<?php
+if(isset($_GET['error'])) {
+    echo $_GET['error'];
+}
+?>
+
+
 </body>
 </html>

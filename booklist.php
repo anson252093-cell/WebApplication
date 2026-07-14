@@ -1,15 +1,20 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "ansonn";
+$password = "ALZK0705";
 $dbname = "anson";
 
 
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
-?>
 
+/* session_start();
+if(!isset($_SESSION["email"])) {
+    header("Location: index.php");
+    exit();
+} */
+?> 
 
 <!DOCTYPE html>
 <html lang="en">
