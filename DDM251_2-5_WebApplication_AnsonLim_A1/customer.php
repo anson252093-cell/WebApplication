@@ -83,7 +83,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
             <td><?php echo $row['lastName']; ?></td>
             <td><?php echo $row['email']; ?></td>
             <td><?php echo $row['gender']; ?></td>
-            <td><a href="editCustomer.php"><button>Edit</button></a></td>
+            <td><button><a href="editCustomer.php?customerID=<?php echo $row['customerID']; ?>">edit</a></button></td>
             <td><button>Delete</button></td>
         </tr>
         <?php
@@ -95,3 +95,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 </div>
 
 </body>
+
+
+
+      

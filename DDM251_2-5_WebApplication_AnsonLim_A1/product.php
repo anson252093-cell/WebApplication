@@ -78,7 +78,11 @@ $conn = new mysqli($servername, $username, $password, $dbname);
             <td><?php echo $row['productName']; ?></td>
             <td><?php echo $row['description']; ?></td>
             <td><?php echo $row['price']; ?></td>
-            <td><a href="editProduct.php"><button>Edit</button></a></td>
+            <td>
+    <a href="editProduct.php?productID=<?php echo $row['productID']; ?>">
+        <button>Edit</button>
+    </a>
+</td>
             <td><button>Delete</button></td>
         </tr>
         <?php
