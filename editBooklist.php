@@ -27,10 +27,10 @@
         </tr>
          <form action="updateBooklist.php" method="POST">
                 <td><input type="text" value="<?php echo $_POST['ISBN']; ?>" readonly></td>
-                <td><input type="text" name="Title"></td>
-                <td><input type="text" name="Author"></td>
-                <td><input type="text" name="Description"></td>
-                <td><input type="text" name="Price(RM)"></td>
+                <td><input type="text" name="Title" required></td>
+                <td><input type="text" name="Author" required></td>
+                <td><input type="text" name="Description" required></td>
+                <td><input type="number" name="Price(RM)" step="0.01" min="0" required></td>
                 <td><input type="submit" value="submit"></td>
                 </form>
         </tr>

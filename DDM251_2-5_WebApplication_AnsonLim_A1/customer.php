@@ -47,11 +47,11 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
     <a href="welcome.php">Dashboard</a>
     <a href="customer.php">Customer</a>
-    <a href="#">Create Customer</a>
-    <a href="#">Customer List</a>
-    <a href="#">Product</a>
+    <a href="addCustomer.php">Create Customer</a>
+    <a href="customer.php">Customer List</a>
+    <a href="product.php">Product</a>
     <a href="#">Order</a>
-    <a href="#">Logout</a>
+    <a href="logout.php">Logout</a>
 </div>
 
 <div class="content">
@@ -84,7 +84,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
             <td><?php echo $row['email']; ?></td>
             <td><?php echo $row['gender']; ?></td>
             <td><button><a href="editCustomer.php?customerID=<?php echo $row['customerID']; ?>">edit</a></button></td>
-            <td><button>Delete</button></td>
+            <td><button id="dltBtn" onclick="myFunction(<?php echo $row['customerID']; ?>)">Delete</button></td>
         </tr>
         <?php
         }
@@ -93,7 +93,14 @@ $conn = new mysqli($servername, $username, $password, $dbname);
     </table>
 
 </div>
-
+<script>
+           function myFunction(customerID) {
+            let text = "Are you sure you want to delete this " + customerID + "?";
+            if (confirm(text) == true) {
+                window.location.href = "deleteCustomer.php?customerID=" + customerID;
+            }
+           }
+        </script>   
 </body>
 
 

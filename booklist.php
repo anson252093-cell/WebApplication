@@ -61,7 +61,7 @@ if(!isset($_SESSION["email"])) {
                         <input type="hidden" name="ISBN" value="<?php echo $row['ISBN']; ?>">
                         <input type="submit" value="Edit">
                     </form></td>
-            <td><button>Delete</button></td>
+            <td><button id="dltBtn" onclick="myFunction(<?php echo $row['ISBN']; ?>)">Delete</button></td>
         </tr>
         <?php
         }
@@ -70,6 +70,14 @@ if(!isset($_SESSION["email"])) {
         ?>
         <a href="profile.php"><input type="submit" value="Profile"></a>
         <a href="addBook.php"><input type="submit" value="AddBook"></a>
-        <a href=""><input type="submit" value="Logout"></a>             
+        <a href="logout.php"><input type="submit" value="Logout"></a>   
+        <script>
+           function myFunction(ISBN) {
+            let text = "Are you sure you want to delete this " + ISBN + "?";
+            if (confirm(text) == true) {
+                window.location.href = "deleteBooklist.php?ISBN=" + ISBN;
+            }
+           }
+        </script>          
 </body>
 </html>

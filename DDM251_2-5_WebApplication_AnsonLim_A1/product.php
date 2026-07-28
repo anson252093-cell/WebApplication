@@ -51,7 +51,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
     <a href="#">Customer List</a>
     <a href="#">Product</a>
     <a href="#">Order</a>
-    <a href="#">Logout</a>
+    <a href="logout.php">Logout</a>
 </div>
 <div class="content">
 
@@ -78,12 +78,12 @@ $conn = new mysqli($servername, $username, $password, $dbname);
             <td><?php echo $row['productName']; ?></td>
             <td><?php echo $row['description']; ?></td>
             <td><?php echo $row['price']; ?></td>
+            <td><a href="editProduct.php?productID=<?php echo $row['productID']; ?>"><button>Edit</button></a></td>
             <td>
-    <a href="editProduct.php?productID=<?php echo $row['productID']; ?>">
-        <button>Edit</button>
-    </a>
+    <button onclick="myFunction('<?php echo $row['productID']; ?>')">
+        Delete
+    </button>
 </td>
-            <td><button>Delete</button></td>
         </tr>
         <?php
         }
@@ -92,5 +92,13 @@ $conn = new mysqli($servername, $username, $password, $dbname);
     </table>
 
 </div>
-
+<script>
+           function myFunction(productID) {
+            let text = "Are you sure you want to delete this " + productID + "?";
+            if (confirm(text) == true) {
+                window.location.href = "deleteProduct.php?productID=" + productID;
+            }
+           }
+        </script>      
 </body>
+</html>

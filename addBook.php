@@ -45,9 +45,14 @@ $conn = new mysqli($servername, $username, $password, $dbname);
                 <td><input type="text" name="title"></td>
                 <td><input type="text" name="author"></td>
                 <td><textarea cols=50 input type="text" name="description"></textarea></td>
-                <td><input type="text" name="price"></td>
+                <td><input type="number" name="price" ></td>
                 <td><input type="submit" value="add"></td>
                 </form>
         </tr>
+        <?php
+if(isset($_GET['error'])) {
+    echo $_GET['error'];
+}
+?>
 </body>
 </html>

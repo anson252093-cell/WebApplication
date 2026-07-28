@@ -41,7 +41,7 @@
 
 
         <a href="profile.php"><input type="submit" value="Back"></a>
-        <a href=""><input type="submit" value="Logout"></a>
+        <a href="logout.php"><input type="submit" value="Logout"></a>
         
 <?php
 if(isset($_GET['error'])) {

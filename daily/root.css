@@ -1,0 +1,19 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+}
+
+/* Root variables */
+:root {
+
+    --color-primary: #ffffff;
+    --max-width: 430px;
+    --min-height: 100vh;
+
+
+}
