@@ -1,0 +1,85 @@
+.phone {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 0;
+    background: var(--color-phone);
+
+}
+
+.phone-screen {
+    width: 100%;
+    max-width: 430px;
+    min-height: 100vh;
+    background: var(--color-phone-screen);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Sticky Note */
+
+.sticky-note {
+    width: 220px;
+    height: 180px;
+    background: #FFE89A;
+    margin: 0 auto 40px;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .15);
+    transform: rotate(-2deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Covered By Your Grace', sans-serif;
+
+}
+
+.tape {
+    width: 80px;
+    height: 25px;
+    background: rgba(255, 255, 255, .45);
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(4deg);
+    border-radius: 3px;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Edu NSW ACT Foundation', sans-serif;
+}
+
+/* Style all text boxes */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+form input[type="submit"] {
+    color: var(--color-primary);
+    background-color: var(--color-button-login);
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+h2 {
+    margin-bottom: 10px;
+}

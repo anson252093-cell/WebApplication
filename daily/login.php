@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "";
+$dbname = "dairy";
 
 
 
@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //echo $_POST['password'];
     if ($result->num_rows > 0) {
       $_SESSION["email"] = $_POST["email"];
-       header("Location:booklist.php"); 
+       header("Location:home.php"); 
        echo "Login Successful!";
     } else {
         echo "Invalid Email or Password!";
@@ -38,28 +38,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
+  <link rel="stylesheet" href="css/root.css">
+  <link rel="stylesheet" href="css/login.css">
   <style>
-    * {
-      font-size: 20px;
-    }
-
-    body {display: flex; 
-          justify-content: center; 
-          align-items: center; 
-          height: 100vh;
-        }
+   
   </style>
 </head>
 <body>
-  <div id="email">
-    <form target="_self" method="POST">
-      <h2>Enter your Email</h2>
-      <input type="text" name="email">
-      <br/>
-      <h2>Password</h2>
-      <input type="password" name="password">
-      <input type="submit">
-    </form>
+  <div class="phone">
+    <div class="phone-screen">
+        <div id="email">
+           <div class="sticky-note">
+        <div class="tape"></div>
+        <h1>Dear me</h1>
+        <p>Write it. Leave it. Feel lighter.</p>
+    </div>
+    <div class="login">
+      <form target="_self" method="POST">
+        <h2>Enter your Email</h2>
+        <input type="text" name="email" placeholder="Enter Your Email"><br/>
+        <br/>
+        <h2>Password</h2>
+        <input type="password" name="password" placeholder="Enter Your Password"><br/>
+        
+        <input type="submit" value="login">
+        
+      </form>
+      </div>
+    </div>
   </div>
+</div>
 </body>
 </html>

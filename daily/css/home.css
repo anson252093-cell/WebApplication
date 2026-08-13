@@ -1,0 +1,76 @@
+.sidebar {
+    position: absolute;
+    /* Not fixed */
+    top: 0;
+    left: -260px;
+    /* Hide outside phone */
+    width: 200px;
+    height: 100%;
+    background: #1b1b1b;
+    transition: .3s;
+    z-index: 1000;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar a {
+    display: block;
+    padding: 15px 25px;
+}
+
+#main {
+    transition: .3s;
+}
+
+.phone {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 0;
+    background: var(--color-phone);
+
+}
+
+.phone-screen {
+    width: 100%;
+    max-width: 430px;
+    min-height: 100vh;
+    background: var(--color-phone-screen);
+    position: relative;
+    overflow: hidden;
+}
+
+.sticky-note {
+    width: 220px;
+    height: 180px;
+    background: #FFE89A;
+    margin: 0 auto 40px;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .15);
+    transform: rotate(-2deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Covered By Your Grace', sans-serif;
+
+}
+
+.tape {
+    width: 80px;
+    height: 25px;
+    background: rgba(255, 255, 255, .45);
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(4deg);
+    border-radius: 3px;
+}
+
+.menu-btn {
+    padding: 20px
+}

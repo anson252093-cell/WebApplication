@@ -1,4 +1,5 @@
 <?php
+session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -6,7 +7,8 @@ $dbname = "anson";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
-session_start();
+
+
 // Check connection
 //if(isset($_POST['email']) && isset($_POST['password'])) {
 $error = "";
@@ -29,15 +31,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
 
             $row = $result->fetch_assoc();
+           
 
             if ($row['password'] != $password) {
 
                 $error = "Wrong password";
             } else {
 
-                $_SESSION['email'] = $email;
-                header("Location: booking.php");
-                exit();
+               $_SESSION['email'] = $row['email'];
+$_SESSION['customerID'] = $row['customerID'];
+$_SESSION['name'] = $row['name'];
+$_SESSION['yearJoin'] = $row['yearJoin'];
+
+header("Location: booking.php");
+exit();
             }
         }
     }

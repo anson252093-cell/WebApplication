@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Edu+NSW+ACT+Foundation:wght@400..700&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+}
+
+/* Root variables */
+:root {
+
+    --color-primary: #ffffff;
+    --color-secondary: #fc0000;
+    --color-phone: #000000;
+    --color-phone-screen: #EDE0C8;
+    --color-button-login: #ab7f4d;
+}
+
+.sticky-note {
+    width: 220px;
+    height: 180px;
+    background: #FFE89A;
+    margin: 0 auto 40px;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .15);
+    transform: rotate(-2deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Covered By Your Grace', sans-serif;
+
+}
+
+.tape {
+    width: 80px;
+    height: 25px;
+    background: rgba(255, 255, 255, .45);
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(4deg);
+    border-radius: 3px;
+}
+
+.fab {
+    position: absolute;
+    /* inside phone-screen */
+    right: 20px;
+    bottom: 30px;
+
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+
+    border: none;
+    background: #4A3B2F;
+    /* brown */
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .3);
+}
