@@ -1,0 +1,287 @@
+<?php
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "yxshop";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+
+// ========================================
+// TOTAL ORDER
+// ========================================
+
+$query = "SELECT COUNT(*) AS total_order FROM `order`";
+
+$result = mysqli_query($conn, $query);
+
+$row = mysqli_fetch_assoc($result);
+
+$total_order = $row['total_order'];
+
+
+// ========================================
+// PRODUCTS HAVEN'T SELL
+// ========================================
+
+$query = "
+    SELECT COUNT(*) AS unsold_products
+    FROM product
+    WHERE product_id NOT IN (
+        SELECT DISTINCT product_id
+        FROM `order`
+    )
+";
+
+$result = mysqli_query($conn, $query);
+
+$row = mysqli_fetch_assoc($result);
+
+$unsold_products = $row['unsold_products'];
+
+
+// ========================================
+// CUSTOMERS HAVEN'T PURCHASE
+// ========================================
+
+$query = "
+    SELECT COUNT(*) AS no_purchase
+    FROM customer
+    WHERE customer_id NOT IN (
+        SELECT DISTINCT customer_id
+        FROM `order`
+    )
+";
+
+$result = mysqli_query($conn, $query);
+
+$row = mysqli_fetch_assoc($result);
+
+$no_purchase = $row['no_purchase'];
+
+
+// ========================================
+// TOP 3 PRODUCTS
+// ========================================
+
+$query = "
+    SELECT
+        product.product_name,
+        SUM(`order`.quantity) AS total_sold
+    FROM `order`
+    INNER JOIN product
+        ON `order`.product_id = product.product_id
+    GROUP BY product.product_id, product.product_name
+    ORDER BY total_sold DESC
+    LIMIT 3
+";
+
+$top_products = mysqli_query($conn, $query);
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard</title>
+
+</head>
+
+
+<style>
+
+    table {
+        border-collapse: collapse;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
+
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 200px;
+        position: fixed;
+        height: 100vh;
+        background-color: rgb(127, 214, 225);
+        padding: 20px;
+    }
+
+    .content {
+        margin-left: 240px;
+        padding: 20px;
+    }
+
+</style>
+
+
+<body>
+
+
+<!-- ========================================
+     SIDEBAR
+======================================== -->
+
+<div class="sidebar">
+
+    <h4>YX SHOP</h4>
+
+    <a href="dashboard.php">
+        Dashboard
+    </a>
+
+    <a href="customerlist.php">
+        Customer
+    </a>
+
+    <a href="addcustomer.php">
+        Create Customer
+    </a>
+
+    <a href="customerlist.php">
+        Customer List
+    </a>
+
+    <a href="productlist.php">
+        Product
+    </a>
+
+    <a href="orderlist.php">
+        Order
+    </a>
+
+    <a href="logout.php">
+        Logout
+    </a>
+
+</div>
+
+
+<!-- ========================================
+     DASHBOARD CONTENT
+======================================== -->
+
+<div class="content">
+
+    <h1>Welcome</h1>
+
+
+    <!-- TOTAL ORDER -->
+
+    <h2>Total Order</h2>
+
+    <p>
+        <?php echo $total_order; ?>
+    </p>
+
+
+    <!-- PRODUCTS HAVEN'T SELL -->
+
+    <h2>Products Haven't Sell</h2>
+
+    <p>
+        <?php echo $unsold_products; ?>
+    </p>
+
+
+    <!-- CUSTOMERS HAVEN'T PURCHASE -->
+
+    <h2>Customers Haven't Purchase</h2>
+
+    <p>
+        <?php echo $no_purchase; ?>
+    </p>
+
+
+    <!-- TOP 3 PRODUCTS -->
+
+    <h2>Top 3 Products</h2>
+
+    <table width="600">
+
+        <tr>
+
+            <th>
+                Product Name
+            </th>
+
+            <th>
+                Quantity Sold
+            </th>
+
+        </tr>
+
+
+        <?php
+
+        if (mysqli_num_rows($top_products) > 0) {
+
+            while ($row = mysqli_fetch_assoc($top_products)) {
+
+        ?>
+
+            <tr>
+
+                <td>
+                    <?php echo $row['product_name']; ?>
+                </td>
+
+                <td>
+                    <?php echo $row['total_sold']; ?>
+                </td>
+
+            </tr>
+
+        <?php
+
+            }
+
+        } else {
+
+        ?>
+
+            <tr>
+
+                <td colspan="2">
+                    No orders yet.
+                </td>
+
+            </tr>
+
+        <?php
+
+        }
+
+        ?>
+
+    </table>
+
+</div>
+
+
+</body>
+
+</html>
+
+<?php
+
+mysqli_close($conn);
+
+?>

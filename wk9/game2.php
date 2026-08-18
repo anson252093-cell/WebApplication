@@ -18,23 +18,43 @@ if (!isset($_SESSION['uid'])) {
 
 $uid = $_SESSION['uid'];
 
+// Find this user's information
+$result = mysqli_query($conn, "SELECT * FROM guest WHERE uid = '$uid'");
+
+if (!$result) {
+    die("Error: " . mysqli_error($conn));
+}
+
+$row = mysqli_fetch_assoc($result);
+
 $message = "";
 
+// Game 1 button pressed
 if (isset($_POST['game2'])) {
 
-    $game2 = $_POST['game2'];
+    // Check how many times this user already played
+    if ($row['game2_click'] < 2) {
 
-    $sql = "UPDATE guest
-            SET `game2` = '$game2'
-            WHERE uid = '$uid'";
+        $game2 = $_POST['game2'];
 
-    if (mysqli_query($conn, $sql)) {
+        $sql = "UPDATE guest
+                SET game2 = '$game2',
+                    game2_click = game2_click + 1
+                WHERE uid = '$uid'";
 
-        $message = "Game 2 saved successfully!";
-        header("Location: game.php");
+        if (mysqli_query($conn, $sql)) {
+
+            header("Location: game.php");
+            exit();
+
+        } else {
+
+            $message = "Error: " . mysqli_error($conn);
+        }
+
     } else {
 
-        $message = "Error: " . mysqli_error($conn);
+        $message = "You can only click 2 times!";
     }
 }
 
@@ -45,12 +65,12 @@ mysqli_close($conn);
 <html>
 
 <head>
-    <title>Game 2</title>
+    <title>Game 1</title>
 </head>
 
 <body>
 
-    <h2>Game 2</h2>
+    <h2>Game 1</h2>
 
     <form method="POST">
 

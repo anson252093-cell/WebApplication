@@ -39,7 +39,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
     </a>
 </div>
 
-<div id="main">
+<div id="main" onclick="closeNav()">
     
 </div>
         <div class="sticky-note">
@@ -47,20 +47,22 @@ $conn = new mysqli($servername, $username, $password, $dbname);
         <h1>Welcome Back,</h1>
         <p>Write it. Leave it. Feel lighter.</p>
     </div>
-    <button class="fab">
-    <img src="images/edit.png" alt="Edit" width="20px">
-    </button>
+    <a href="write.php" class="fab">
+    <img src="images/edit1.png" alt="Edit" width="20px">
+    
+    </a>
     </div>
 </div>
 
 <script>
-function openNav(){
+function openNav(){ 
     document.querySelector(".sidebar").classList.add("active");
-}
-
-function closeNav(){
+    document.querySelector("#main").classList.add("active");
+} 
+ 
+function closeNav(){ 
     document.querySelector(".sidebar").classList.remove("active");
-
+    document.querySelector("#main").classList.remove("active");
 }
 </script>
 </body>

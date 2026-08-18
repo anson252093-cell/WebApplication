@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -32,14 +34,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $row = $result->fetch_assoc();
 
-            if ($row['password'] != $password) {
+           if ($row['password'] != $password) {
 
-                $error = "Wrong password";
-            } else {
+    $error = "Wrong password";
+} else {
 
-                header("Location: welcome.php");
-                exit();
-            }
+    $_SESSION['username'] = $row['username'];
+    $_SESSION['customerID'] = $row['customerID'];
+
+    header("Location: welcome.php");
+    exit();
+}
         }
     }
 }

@@ -51,15 +51,15 @@ body {
 .fab {
     position: absolute;
     /* inside phone-screen */
-    right: 20px;
-    bottom: 30px;
+    right: 30px;
+    bottom: 70px;
 
     width: 70px;
     height: 70px;
     border-radius: 50%;
 
     border: none;
-    background: #4A3B2F;
+    background: #000000;
     /* brown */
     cursor: pointer;
 

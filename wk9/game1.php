@@ -18,35 +18,43 @@ if (!isset($_SESSION['uid'])) {
 
 $uid = $_SESSION['uid'];
 
+// Find this user's information
+$result = mysqli_query($conn, "SELECT * FROM guest WHERE uid = '$uid'");
+
+if (!$result) {
+    die("Error: " . mysqli_error($conn));
+}
+
+$row = mysqli_fetch_assoc($result);
+
 $message = "";
 
+// Game 1 button pressed
 if (isset($_POST['game1'])) {
 
-    $game1 = $_POST['game1'];
+    // Check how many times this user already played
+    if ($row['game1_click'] < 2) {
 
-    // 先读取目前已经选了几次
-    $check = "SELECT game1_count FROM guest WHERE uid='$uid'";
-    $result = mysqli_query($conn, $check);
-    $row = mysqli_fetch_assoc($result);
+        $game1 = $_POST['game1'];
 
-    if ($row['game1_count'] >= 2) {
+        $sql = "UPDATE guest
+                SET game1 = '$game1',
+                    game1_click = game1_click + 1
+                WHERE uid = '$uid'";
 
-        $message = "You have reached the maximum of 2 selections.";
+        if (mysqli_query($conn, $sql)) {
+
+            header("Location: game.php");
+            exit();
+
+        } else {
+
+            $message = "Error: " . mysqli_error($conn);
+        }
 
     } else {
 
-        $sql = "UPDATE guest
-                SET game1='$game1',
-                    game1_count = game1_count + 1
-                WHERE uid='$uid'";
-
-        if (mysqli_query($conn, $sql)) {
-            $message = "Game 1 saved successfully!";
-            header("Location: game.php");
-            exit();
-        } else {
-            $message = "Error: " . mysqli_error($conn);
-        }
+        $message = "You can only click 2 times!";
     }
 }
 
